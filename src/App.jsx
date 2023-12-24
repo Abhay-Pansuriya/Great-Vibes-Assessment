@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div className="container mx-auto my-4">
       <div className="create-btn flex justify-end">
-        <button className="bg-primary text-white flex items-center justify-center gap-1 text-base font-poppins font-normal py-2 px-4 rounded"
+        <button className="bg-primary hover:bg-btnHover text-white flex items-center justify-center gap-1 text-base font-poppins font-normal py-2 px-4 rounded"
           onClick={() => { setModal(true) }}
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">

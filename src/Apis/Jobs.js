@@ -1,8 +1,9 @@
+import { Axios } from "axios";
 const ServerURL = "https://6584555f4d1ee97c6bcf8410.mockapi.io/api/v1/assessment";
 
 export const GetAllJobs = () => {
     return new Promise(async (resolve, reject) => {
-        await axios.get(`${ServerURL}/jobs`)
+        await Axios.get(`${ServerURL}/jobs`)
             .then(function (response) {
                 resolve(response)
                 console.log(response);
@@ -16,7 +17,7 @@ export const GetAllJobs = () => {
 
 export const CreateNewJob = (input) => {
     return new Promise(async (resolve, reject) => {
-        await axios.post(`${ServerURL}/jobs`, input)
+        await Axios.post(`${ServerURL}/jobs`, input)
             .then(function (response) {
                 console.log(response);
                 resolve(response)
@@ -30,7 +31,7 @@ export const CreateNewJob = (input) => {
 
 export const UpdateJob = (input, id) => {
     return new Promise(async (resolve, reject) => {
-        await axios.put(`${ServerURL}/jobs/${id}`, input)
+        await Axios.put(`${ServerURL}/jobs/${id}`, input)
             .then(function (response) {
                 console.log(response);
                 resolve(response)
@@ -45,7 +46,7 @@ export const UpdateJob = (input, id) => {
 
 export const DeleteJob = (input, id) => {
     return new Promise(async (resolve, reject) => {
-        await axios.delete(`${ServerURL}/jobs/${id}`, input)
+        await Axios.delete(`${ServerURL}/jobs/${id}`, input)
             .then(function (response) {
                 console.log(response);
                 resolve(response)

@@ -13,7 +13,8 @@ module.exports = {
       card: "#FFFFFF",
       border: "#E6E6E6",
       background: "#D8D8D8",
-      transparent: "transparent"
+      transparent: "transparent",
+      btnHover: "#0b73b1d4"
     },
     fontFamily: {
       poppins: ['"Poppins"', 'sans-serif']
