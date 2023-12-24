@@ -12,7 +12,7 @@ const Step2 = ({ stepOneData, setStep }) => {
   const [maxSal, setMaxSal] = useState();
   const [totalEmp, setTotalEmp] = useState();
   const [applyType, setApplyType] = useState("");
-  const [loading, setLoading] = useState(true)
+  // const [loading, setLoading] = useState(true)
   const [errors, setErrors] = useState({});
 
   // Validation of fields
@@ -49,7 +49,7 @@ const Step2 = ({ stepOneData, setStep }) => {
     }
     const createJob = await CreateNewJob(data)
     if (createJob?.status) {
-      setLoading(false)
+      // setLoading(false)
       if (createJob?.status === 201) {
         toast.success('Job has been created..!')
       }else{
