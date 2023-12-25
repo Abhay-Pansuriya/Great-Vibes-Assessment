@@ -71,8 +71,8 @@ const Step1 = ({ stepOneData, setStepOneData, setStep }) => {
             <Input type="text" placeholder="ex. In-office" value={remoteType} onChange={(e) => handleInputChange("remoteType", e.target.value)} />
           </div>
         </div>
-        <div className='flex justify-end'>
-          <FormButton text="Next" />
+        <div className='flex justify-end mt-24'>
+          <FormButton text="Next" primary />
         </div>
       </form>
     </div>

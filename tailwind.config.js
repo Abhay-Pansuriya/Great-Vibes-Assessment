@@ -14,7 +14,8 @@ module.exports = {
       border: "#E6E6E6",
       background: "#D8D8D8",
       transparent: "transparent",
-      btnHover: "#0b73b1d4"
+      btnHover: "#0b73b1d4",
+      grayText: "#646464"
     },
     fontFamily: {
       poppins: ['"Poppins"', 'sans-serif']

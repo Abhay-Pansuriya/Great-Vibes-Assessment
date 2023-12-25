@@ -5,13 +5,13 @@ import FormButton from '../Common/FormButton';
 import { CreateNewJob } from '../../Apis/Jobs';
 import toast from "react-hot-toast"
 
-const Step2 = ({ stepOneData, setStep }) => {
-  const [minExp, setMinExp] = useState("");
-  const [maxExp, setMaxExp] = useState("");
-  const [minSal, setMinSal] = useState();
-  const [maxSal, setMaxSal] = useState();
-  const [totalEmp, setTotalEmp] = useState();
-  const [applyType, setApplyType] = useState("");
+const Step2 = ({ stepOneData, setStep, stepTwoData, setStepTwoData }) => {
+  const [minExp, setMinExp] = useState(stepTwoData?.minExp);
+  const [maxExp, setMaxExp] = useState(stepTwoData?.maxExp);
+  const [minSal, setMinSal] = useState(stepTwoData?.minSal);
+  const [maxSal, setMaxSal] = useState(stepTwoData?.maxSal);
+  const [totalEmp, setTotalEmp] = useState(stepTwoData?.totalEmp);
+  const [applyType, setApplyType] = useState(stepTwoData?.applyType);
   // const [loading, setLoading] = useState(true)
   const [errors, setErrors] = useState({});
 
@@ -19,6 +19,10 @@ const Step2 = ({ stepOneData, setStep }) => {
   const validateFields = () => {
     let newErrors = {};
     if (!applyType) newErrors.applyType = "Apply type is a required field.";
+    if (minExp || maxExp) {
+      if ((minExp && !maxExp) || (!minExp && maxExp)) newErrors.experience = "Minimum and Maximum both experience should be entered.";
+      else if (parseFloat(minExp) > parseFloat(maxExp)) newErrors.experience = "Maximum experience should be greater than Minimum experience";
+    }
     if (minSal || maxSal) {
       if ((minSal && !maxSal) || (!minSal && maxSal)) newErrors.salary = "Minimum and Maximum both salaries should be entered.";
       else if (parseFloat(minSal) > parseFloat(maxSal)) newErrors.salary = "Maximum salary should be greater than Minimum salary";
@@ -52,7 +56,7 @@ const Step2 = ({ stepOneData, setStep }) => {
       // setLoading(false)
       if (createJob?.status === 201) {
         toast.success('Job has been created..!')
-      }else{
+      } else {
         toast.error('Something went wrong while creating job')
       }
     }
@@ -83,9 +87,10 @@ const Step2 = ({ stepOneData, setStep }) => {
         <div className='mt-6'>
           <Label text="Experience" />
           <div className=' flex justify-between items-center'>
-            <Input type="text" placeholder="Minimum" value={minExp} onChange={(e) => handleInputChange("minExp", e.target.value)} />
-            <Input type="text" placeholder="Maximum" value={maxExp} onChange={(e) => handleInputChange("maxExp", e.target.value)} />
+            <Input type="number" min={0} placeholder="Minimum" value={minExp} onChange={(e) => handleInputChange("minExp", e.target.value)} />
+            <Input type="number" min={0} placeholder="Maximum" value={maxExp} onChange={(e) => handleInputChange("maxExp", e.target.value)} />
           </div>
+          {errors?.experience && <span className='text-error font-poppins font-normal text-xs'>{errors?.experience}</span>}
         </div>
         <div className='mt-6'>
           <Label text="Salary" />
@@ -97,7 +102,7 @@ const Step2 = ({ stepOneData, setStep }) => {
         </div>
         <div className='mt-6'>
           <Label text="Total Employee" />
-          <Input type="number" placeholder="ex. 100" value={totalEmp} onChange={(e) => handleInputChange("totalEmp", e.target.value)} />
+          <Input type="text" placeholder="ex. 50-100" value={totalEmp} onChange={(e) => handleInputChange("totalEmp", e.target.value)} />
         </div>
         <div className='mt-6'>
           <Label text="Apply Type" isRequired={true} />
@@ -120,10 +125,8 @@ const Step2 = ({ stepOneData, setStep }) => {
           {errors?.applyType && <span className='text-error font-poppins font-normal text-xs'>{errors?.applyType}</span>}
         </div>
         <div className='flex justify-between items-center mt-24'>
-          <button type='button' className='bg-card hover:bg-white text-dark border border-primary font-poppins font-medium text-base px-4 py-3 rounded-lg focus:ring focus:outline-none' onClick={() => { setStep(1) }}>
-            Back
-          </button>
-          <FormButton text="Submit" className="mt-0" />
+          <FormButton text="Back" type="button" onClick={() => { setStep(1) }} />
+          <FormButton text="Submit" primary />
         </div>
       </form>
     </div >
