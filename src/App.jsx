@@ -39,7 +39,7 @@ const App = () => {
           </div>
           :
           <div className='align-center'>
-            <p className='text-center'> Looks Like you haven't crated any job yet, click on "Add Job" button to create.</p>
+            <p className='text-center'> Looks Like you haven't crated any job yet, click on "Create Job" button to create.</p>
           </div>
       }
 
