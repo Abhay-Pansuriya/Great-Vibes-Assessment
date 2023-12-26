@@ -46,7 +46,7 @@ const Step1 = ({ stepOneData, setStepOneData, setStep }) => {
           <Label text="Industry" isRequired={true} />
           <Input type="text" placeholder="ex. Information Technology" value={stepOneData?.industry} onChange={(e) => handleInputChange("industry", e.target.value)} error={errors?.industry} />
         </div>
-        <div className='mt-6 flex items-center justify-between '>
+        <div className='mt-6 flex items-center justify-between gap-6'>
           <div>
             <Label text="Location" />
             <Input type="text" placeholder="ex. Chennai" value={stepOneData?.location} onChange={(e) => handleInputChange("location", e.target.value)} />

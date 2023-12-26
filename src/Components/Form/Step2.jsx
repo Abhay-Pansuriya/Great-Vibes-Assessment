@@ -85,7 +85,7 @@ const Step2 = ({ stepOneData, setStep, stepTwoData, setStepTwoData, isEdit, id, 
       <form onSubmit={handleStep2}>
         <div className='mt-6'>
           <Label text="Experience" />
-          <div className=' flex justify-between items-center'>
+          <div className=' flex justify-between items-center gap-6'>
             <Input type="number" min={0} placeholder="Minimum" value={stepTwoData?.minExp} onChange={(e) => handleInputChange("minExp", e.target.value)} />
             <Input type="number" min={0} placeholder="Maximum" value={stepTwoData?.maxExp} onChange={(e) => handleInputChange("maxExp", e.target.value)} />
           </div>
@@ -93,7 +93,7 @@ const Step2 = ({ stepOneData, setStep, stepTwoData, setStepTwoData, isEdit, id, 
         </div>
         <div className='mt-6'>
           <Label text="Salary" />
-          <div className=' flex justify-between items-center'>
+          <div className=' flex justify-between items-center gap-6'>
             <Input type="number" min={0} placeholder="Minimum" value={stepTwoData?.minSal} onChange={(e) => handleInputChange("minSal", e.target.value)} />
             <Input type="number" min={0} placeholder="Maximum" value={stepTwoData?.maxSal} onChange={(e) => handleInputChange("maxSal", e.target.value)} />
           </div>
